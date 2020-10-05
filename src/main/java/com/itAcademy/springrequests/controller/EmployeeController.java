@@ -1,15 +1,15 @@
 package com.itAcademy.springrequests.controller;
 
 
-import com.itAcademy.springrequests.repository.IEmployeeRepository;
+import com.itAcademy.springrequests.repository.IRepository;
 
 
 
 public class EmployeeController {
 
-    private final IEmployeeRepository repository;
+    private final IRepository repository;
 
-    public EmployeeController(IEmployeeRepository repository){
+    public EmployeeController(IRepository repository){
         this.repository = repository;
     }
 }

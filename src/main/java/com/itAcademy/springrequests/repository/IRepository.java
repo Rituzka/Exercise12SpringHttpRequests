@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface IEmployeeRepository {
+public interface IRepository {
 
     //GET all Employees
     List<Employee> getEmployees();

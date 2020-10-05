@@ -4,50 +4,52 @@ package com.itAcademy.springrequests.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
+enum Role {
+    Director, Manager, Supervisor, Coordinator, Staff
+}
+
 @Entity
 public class Employee {
 
     private @GeneratedValue Long id;
-    private String name;
-    private String surname;
-    private String role;
+    private final String name;
+    private final String surname;
+    double salary;
+    Role role;
 
-    public Employee(String name, String surname, String role) {
+    public Employee(String name, String surname,double salary, Role role) {
         this.name = name;
         this.surname = surname;
+        this.salary = salary;
         this.role = role;
     }
-
-
+    
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void getSalary() {
+        switch(role){
+            case Director: salary = 350000;break;
+            case Manager: salary = 210000;break;
+            case Supervisor: salary = 100000; break;
+            case Coordinator: salary = 70000;break;
+            case Staff: salary = 30000;break;
+            default: salary = 0;
+        }
     }
+
+
 }
