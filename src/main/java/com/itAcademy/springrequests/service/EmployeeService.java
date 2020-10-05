@@ -5,13 +5,12 @@ import com.itAcademy.springrequests.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements IService {
 
     private final EmployeeRepository repository;
 
@@ -19,15 +18,29 @@ public class EmployeeService {
     public EmployeeService(@Qualifier("fakeRepository") EmployeeRepository repository) {
         this.repository = repository;
     }
-    //get all employees from repository
-    public List<Employee> getAllEmployees(){
+
+    @Override
+    public List<Employee> getAllEmployees() {
         return repository.getEmployees();
     }
 
-    //get employee by id
-    public Optional<Employee> getEmployeeById(UUID id){
+    @Override
+    public Optional<Employee> getEmployee(UUID id) {
         return repository.getEmployeeById(id);
     }
-    
 
+    @Override
+    public int createEmployee(UUID id, Employee employee) {
+        return 1;
+    }
+
+    @Override
+    public int deleteEmployee(UUID id) {
+        return 0;
+    }
+
+    @Override
+    public int updateEmployee(UUID id, Employee employee) {
+        return 0;
+    }
 }
