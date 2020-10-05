@@ -2,7 +2,7 @@ package com.itAcademy.springrequests.dto;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import java.util.UUID;
 
 enum Role {
     Director, Manager, Supervisor, Coordinator, Staff
@@ -11,20 +11,22 @@ enum Role {
 @Entity
 public class Employee {
 
-    private @GeneratedValue Long id;
+    private final UUID id;
     private final String name;
     private final String surname;
-    double salary;
     Role role;
+    double salary;
 
-    public Employee(String name, String surname,double salary, Role role) {
+
+    public Employee(UUID id, String name, String surname, Role role, double salary) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
-        this.salary = salary;
         this.role = role;
+        this.salary = salary;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -50,6 +52,4 @@ public class Employee {
             default: salary = 0;
         }
     }
-
-
 }
