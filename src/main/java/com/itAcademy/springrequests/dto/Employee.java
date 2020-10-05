@@ -1,14 +1,14 @@
 package com.itAcademy.springrequests.dto;
 
 
-import javax.persistence.Entity;
+import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 enum Role {
     Director, Manager, Supervisor, Coordinator, Staff
 }
 
-@Entity
+@Component
 public class Employee {
 
     private final UUID id;
@@ -42,7 +42,7 @@ public class Employee {
         return role;
     }
 
-    public void getSalary() {
+    public double getSalary() {
         switch(role){
             case Director: salary = 350000;break;
             case Manager: salary = 210000;break;
@@ -51,5 +51,6 @@ public class Employee {
             case Staff: salary = 30000;break;
             default: salary = 0;
         }
+        return salary;
     }
 }
