@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository
+@Repository("fakeRepository")
 public class EmployeeRepository implements IRepository{
 
     @Autowired
