@@ -23,7 +23,7 @@ public class Employee {
         this.salary = salary;
         this.role = role;
     }
-    
+
     public Long getId() {
         return id;
     }
