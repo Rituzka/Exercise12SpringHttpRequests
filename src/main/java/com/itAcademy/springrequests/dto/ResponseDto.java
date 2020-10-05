@@ -1,4 +1,4 @@
 package com.itAcademy.springrequests.dto;
 
-public class ResponseDto {
+public abstract class ResponseDto {
 }

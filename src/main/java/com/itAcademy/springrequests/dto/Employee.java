@@ -5,14 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
 @Entity
-public class EmployeeResponseDto {
+public class Employee {
 
     private @GeneratedValue Long id;
     private String name;
     private String surname;
     private String role;
 
-    public EmployeeResponseDto(String name, String surname, String role) {
+    public Employee(String name, String surname, String role) {
         this.name = name;
         this.surname = surname;
         this.role = role;
