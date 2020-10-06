@@ -12,9 +12,9 @@ public interface IRepository {
     List<Employee> getEmployees();
 
     //GET one Employee
-    Optional<Employee> getEmployeeById(UUID id);
+    Optional <Employee> getEmployeeById(UUID id);
 
-    //POST insert a new Employee with an id
+    //POST insert a new Employee
     int insertEmployee(UUID id, Employee employee);
 
     //POST insert a new Employee without id (id random)

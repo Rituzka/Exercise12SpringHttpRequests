@@ -1,6 +1,7 @@
 package com.itAcademy.springrequests.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.stereotype.Component;
 import java.util.UUID;
 
@@ -17,8 +18,14 @@ public class Employee {
     Role role;
     double salary;
 
-
-    public Employee(UUID id, String name, String surname, Role role, double salary) {
+   //Constructor
+    public Employee(
+            @JsonProperty("id") UUID id,
+            @JsonProperty("name") String name,
+            @JsonProperty("surname") String surname,
+            @JsonProperty("role")Role role,
+            @JsonProperty("salary")double salary
+    ) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -26,6 +33,7 @@ public class Employee {
         this.salary = salary;
     }
 
+    //Getters & setters
     public UUID getId() {
         return id;
     }
