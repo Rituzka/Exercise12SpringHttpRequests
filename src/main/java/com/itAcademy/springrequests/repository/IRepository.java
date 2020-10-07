@@ -4,7 +4,7 @@ import com.itAcademy.springrequests.dto.Employee;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 public interface IRepository {
 
@@ -12,22 +12,16 @@ public interface IRepository {
     List<Employee> getEmployees();
 
     //GET one Employee
-    Optional <Employee> getEmployeeById(UUID id);
+    Optional <Employee> getEmployeeById(long id);
 
     //POST insert a new Employee
-    int insertEmployee(UUID id, Employee employee);
-
-    //POST insert a new Employee without id (id random)
-    default int insertEmployee(Employee employee){
-        UUID id = UUID.randomUUID();
-        return insertEmployee(id, employee);
-    }
+    int insertEmployee(Employee employee);
 
     //UPDATE data from an specific Employee
-    int updateDataEmployee(UUID id, Employee employee);
+    int updateDataEmployee(long id, Employee employee);
 
     //DELETE an specific Employee
-    int deleteEmployeeById(UUID id);
+    int deleteEmployeeById(long id);
 
 
 }

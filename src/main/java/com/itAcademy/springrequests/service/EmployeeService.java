@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class EmployeeService implements IService {
@@ -27,25 +26,25 @@ public class EmployeeService implements IService {
 
     //get one Employee by id
     @Override
-    public Optional <Employee> getEmployee(UUID id) {
+    public Optional <Employee> getEmployee(long id) {
         return repository.getEmployeeById(id);
     }
 
     // Create new Employee
     @Override
-    public int createEmployee(UUID id, Employee employee) {
-        return repository.insertEmployee(id, employee);
+    public void createEmployee(Employee employee) {
+        repository.insertEmployee(employee);
     }
 
     //update data from one employee
     @Override
-    public int updateEmployee(UUID id, Employee employee) {
-        return repository.updateDataEmployee(id, employee);
+    public void updateEmployee(long id, Employee employee) {
+        repository.updateDataEmployee(id, employee);
     }
 
     //delete one employee from repository
     @Override
-    public int deleteEmployee(UUID id) {
-        return repository.deleteEmployeeById(id);
+    public void deleteEmployee(long id) {
+        repository.deleteEmployeeById(id);
     }
 }

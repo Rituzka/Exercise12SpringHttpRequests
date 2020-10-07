@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 
 @RestController
@@ -28,25 +27,25 @@ public class EmployeeController {
 
    //get one employee from the list
     @GetMapping
-    public Optional<Employee> getOneEmployee(UUID id) {
+    public Optional<Employee> getOneEmployee(long id) {
         return service.getEmployee(id);
     }
 
    //Create a new Employee in the list (REVISAR)
-   @PostMapping(path = {"id"})
-    public void addEmployee(@PathVariable("id") UUID id, @RequestBody Employee employee){
-        service.createEmployee(id, employee);
+   @PostMapping
+    public void addEmployee(@RequestBody Employee employee){
+        service.createEmployee(employee);
    }
 
    //Update one employee with id
     @PutMapping(path = {"id"})
-    public void updateEmployee(@PathVariable("id") UUID id, @RequestBody Employee employee){
+    public void updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
         service.updateEmployee(id, employee);
     }
 
     //Delete one employee with id
     @DeleteMapping(path = {"id"})
-    public void deleteEmployee(@PathVariable("id") UUID id){
+    public void deleteEmployee(@PathVariable("id") long id){
         service.deleteEmployee(id);
     }
 

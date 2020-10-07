@@ -2,17 +2,19 @@ package com.itAcademy.springrequests.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.stereotype.Component;
-import java.util.UUID;
+import javax.persistence.*;
+
 
 enum Role {
     Director, Manager, Supervisor, Coordinator, Staff
 }
-
-@Component
+@Entity
+@Table(name = "employees")
 public class Employee {
 
-    private final UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private final long id;
     private final String name;
     private final String surname;
     Role role;
@@ -20,7 +22,7 @@ public class Employee {
 
    //Constructor
     public Employee(
-            @JsonProperty("id") UUID id,
+            @JsonProperty("id") long id,
             @JsonProperty("name") String name,
             @JsonProperty("surname") String surname,
             @JsonProperty("role")Role role,
@@ -34,7 +36,7 @@ public class Employee {
     }
 
     //Getters & setters
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
