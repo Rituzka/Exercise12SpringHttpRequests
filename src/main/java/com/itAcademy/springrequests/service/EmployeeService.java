@@ -31,7 +31,7 @@ public class EmployeeService implements IService {
         return repository.getEmployeeById(id);
     }
 
-    // insert new Employee
+    // Create new Employee
     @Override
     public int createEmployee(UUID id, Employee employee) {
         return repository.insertEmployee(id, employee);

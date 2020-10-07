@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository("firstRepository")
 public class EmployeeRepository implements IRepository{
 
-    @Autowired
+
     private final static List<Employee> allEmployees = new ArrayList<>();
 
 
