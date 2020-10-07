@@ -10,6 +10,7 @@ import java.util.Optional;
 
 
 @RestController
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     private final EmployeeService service;
@@ -27,7 +28,7 @@ public class EmployeeController {
 
    //get one employee from the list
     @GetMapping
-    public Optional<Employee> getOneEmployee(long id) {
+    public Optional<Employee> getOneEmployee(@PathVariable(name = "id") long id) {
         return service.getEmployee(id);
     }
 
@@ -38,13 +39,13 @@ public class EmployeeController {
    }
 
    //Update one employee with id
-    @PutMapping(path = {"id"})
+    @PutMapping(path = "{id}")
     public void updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
         service.updateEmployee(id, employee);
     }
 
     //Delete one employee with id
-    @DeleteMapping(path = {"id"})
+    @DeleteMapping(path = "{id}")
     public void deleteEmployee(@PathVariable("id") long id){
         service.deleteEmployee(id);
     }
