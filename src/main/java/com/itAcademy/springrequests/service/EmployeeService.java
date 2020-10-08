@@ -1,7 +1,7 @@
 package com.itAcademy.springrequests.service;
 
 import com.itAcademy.springrequests.dto.Employee;
-import com.itAcademy.springrequests.repository.EmployeeRepository;
+import com.itAcademy.springrequests.repository.IRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.util.Optional;
 @Service
 public class EmployeeService implements IService {
 
-    private final EmployeeRepository repository;
+    private final IRepository repository;
 
     @Autowired
-    public EmployeeService(@Qualifier("firstRepository") EmployeeRepository repository) {
+    public EmployeeService(@Qualifier("firstRepository") IRepository repository) {
         this.repository = repository;
     }
 

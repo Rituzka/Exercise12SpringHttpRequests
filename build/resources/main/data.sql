@@ -4,14 +4,7 @@ CREATE TABLE employees (
   id INT AUTO_INCREMENT  PRIMARY KEY,
   name VARCHAR(250) NOT NULL,
   surname VARCHAR(250) NOT NULL,
-  role VARCHAR(250) DEFAULT NULL
-   CHECK (
-              role = 'Director' OR
-              role = 'Manager' OR
-              role = 'Supervisor' OR
-              role = 'Coordinator' OR
-              role = 'Staff' OR
-          ),
+  role VARCHAR(250) NOT NULL,
   salary DOUBLE NOT NULL
 );
 
