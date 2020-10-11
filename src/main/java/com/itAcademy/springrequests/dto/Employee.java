@@ -2,6 +2,9 @@ package com.itAcademy.springrequests.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.NotNull;
+
+
 import javax.persistence.*;
 
 
@@ -15,7 +18,9 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final long id;
+    @NotNull
     private final String name;
+    @NotNull
     private final String surname;
     Role role;
     double salary;

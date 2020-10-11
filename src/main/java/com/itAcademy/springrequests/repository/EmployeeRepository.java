@@ -25,10 +25,9 @@ public class EmployeeRepository implements IRepository{
     //get one employee
     @Override
     public Optional<Employee> getEmployeeById(long id) {
-       return allEmployees.stream()
-               .filter(employee -> employee.getId() == id)
-               .findFirst();
-
+        return allEmployees.stream()
+                .filter(employee -> employee.getId() == id)
+                .findFirst();
     }
     //insert a new Employee
     @Override
