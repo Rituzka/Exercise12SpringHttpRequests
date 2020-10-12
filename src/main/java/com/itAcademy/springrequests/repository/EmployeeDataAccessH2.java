@@ -1,15 +1,19 @@
 package com.itAcademy.springrequests.repository;
 
 import com.itAcademy.springrequests.dto.Employee;
+import org.springframework.stereotype.Repository;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Repository("secondRepository")
 public class EmployeeDataAccessH2 implements IRepository{
+
     @Override
     public List<Employee> getEmployees() {
-       return 
+       return Collections.emptyList();
     }
 
     @Override

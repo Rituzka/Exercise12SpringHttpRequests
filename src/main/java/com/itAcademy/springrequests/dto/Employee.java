@@ -8,9 +8,9 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 
-enum Role {
+/*enum Role {
     Director, Manager, Supervisor, Coordinator, Staff
-}
+}*/
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -22,15 +22,17 @@ public class Employee {
     private final String name;
     @NotNull
     private final String surname;
-    Role role;
-    double salary;
+    @NotNull
+    private final String role;
+    @NotNull
+    private final double salary;
 
    //Constructor
     public Employee(
             @JsonProperty("id") long id,
             @JsonProperty("name") String name,
             @JsonProperty("surname") String surname,
-            @JsonProperty("role")Role role,
+            @JsonProperty("role")String role,
             @JsonProperty("salary")double salary
     ) {
         this.id = id;
@@ -53,11 +55,15 @@ public class Employee {
         return surname;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
     public double getSalary() {
+        return salary;
+    }
+
+    /*public double getSalary() {
         switch(role){
             case Director: salary = 350000;break;
             case Manager: salary = 210000;break;
@@ -67,5 +73,16 @@ public class Employee {
             default: salary = 0;
         }
         return salary;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", role=" + role +
+                ", salary=" + salary +
+                '}';
     }
 }
