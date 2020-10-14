@@ -7,20 +7,17 @@ import java.util.List;
 import java.util.Optional;
 
 
-
-@Repository("firstRepository")
+@Repository("DummyRepository")
 public class EmployeeRepository implements IRepository{
 
 
     private final static List<Employee> allEmployees = new ArrayList<>();
-
 
     //get all employees
     @Override
     public List<Employee> getEmployees() {
         return allEmployees;
     }
-
 
     //get one employee
     @Override
@@ -37,10 +34,10 @@ public class EmployeeRepository implements IRepository{
                         employee.getId(),
                         employee.getName(),
                         employee.getSurname(),
-                        employee.getRole(),
-                        employee.getSalary()));
+                        employee.getRole()
+                ));
         return 1;
-    }
+    };
 
 //update one employee data
     @Override
@@ -51,8 +48,8 @@ public class EmployeeRepository implements IRepository{
                     new Employee(id,
                             employee.getName(),
                             employee.getSurname(),
-                            employee.getRole(),
-                            employee.getSalary()));
+                            employee.getRole()
+                            ));
             return 1;
         }
         return 0;

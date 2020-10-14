@@ -7,13 +7,13 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 
-
-/*enum Role {
-    Director, Manager, Supervisor, Coordinator, Staff
-}*/
 @Entity
 @Table(name = "employees")
 public class Employee {
+
+    enum Role {
+        Director, Manager, Supervisor, Coordinator, Staff
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,23 +23,23 @@ public class Employee {
     @NotNull
     private final String surname;
     @NotNull
-    private final String role;
+    private final Role role;
     @NotNull
-    private final double salary;
+    private double salary;
 
    //Constructor
     public Employee(
             @JsonProperty("id") long id,
             @JsonProperty("name") String name,
             @JsonProperty("surname") String surname,
-            @JsonProperty("role")String role,
-            @JsonProperty("salary")double salary
+            @JsonProperty("role")Role role
+
     ) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.role = role;
-        this.salary = salary;
+        this.salary = getSalary(role);
     }
 
     //Getters & setters
@@ -55,15 +55,12 @@ public class Employee {
         return surname;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public double getSalary() {
-        return salary;
-    }
+    public double getSalary(Role role) {
 
-    /*public double getSalary() {
         switch(role){
             case Director: salary = 350000;break;
             case Manager: salary = 210000;break;
@@ -73,7 +70,7 @@ public class Employee {
             default: salary = 0;
         }
         return salary;
-    }*/
+    }
 
     @Override
     public String toString() {

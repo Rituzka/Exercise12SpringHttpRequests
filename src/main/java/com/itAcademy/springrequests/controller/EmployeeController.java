@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("employees")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     private final EmployeeService service;
@@ -32,19 +32,19 @@ public class EmployeeController {
     }
 
    //Create a new Employee in the list (REVISAR)
-   @PostMapping
+   @PostMapping("/new")
     public void addEmployee( @NonNull @RequestBody Employee employee){
         service.createEmployee(employee);
    }
 
    //Update one employee with id
-    @PutMapping(path ="{id}")
+    @PutMapping("/update/{id}")
     public void updateEmployee(@PathVariable("id") long id, @NonNull @RequestBody Employee employee){
         service.updateEmployee(id, employee);
     }
 
     //Delete one employee with id
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteEmployee(@PathVariable("id") long id){
         service.deleteEmployee(id);
     }
