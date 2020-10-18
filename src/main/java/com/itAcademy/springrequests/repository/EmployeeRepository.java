@@ -10,25 +10,24 @@ import java.util.Optional;
 @Repository("DummyRepository")
 public class EmployeeRepository implements IRepository{
 
-
-    private final static List<Employee> allEmployees = new ArrayList<>();
+    private final List<Employee> allEmployees = new ArrayList<>();
 
     //get all employees
     @Override
-    public List<Employee> getEmployees() {
+    public List<Employee> selectAllEmployees() {
         return allEmployees;
     }
 
     //get one employee
     @Override
-    public Optional<Employee> getEmployeeById(long id) {
+    public Optional<Employee> selectEmployeeById(long id) {
         return allEmployees.stream()
                 .filter(employee -> employee.getId() == id)
                 .findFirst();
     }
     //insert a new Employee
     @Override
-    public int insertEmployee(Employee employee) {
+    public int insertNewEmployee(Employee employee) {
         allEmployees.add(
                 new Employee(
                         employee.getId(),
@@ -41,8 +40,8 @@ public class EmployeeRepository implements IRepository{
 
 //update one employee data
     @Override
-    public int updateDataEmployee(long id, Employee employee) {
-        Optional<Employee> employeeToUpdate = getEmployeeById(id);
+    public int updateEmployeeById(long id, Employee employee) {
+        Optional<Employee> employeeToUpdate = selectEmployeeById(id);
         if (employeeToUpdate.isPresent()) {
             allEmployees.set(allEmployees.indexOf(employeeToUpdate),
                     new Employee(id,
@@ -58,7 +57,7 @@ public class EmployeeRepository implements IRepository{
    //remove one employee from list
     @Override
     public int deleteEmployeeById(long id) {
-        Optional<Employee> employeeToDelete = getEmployeeById(id);
+        Optional<Employee> employeeToDelete = selectEmployeeById(id);
         if(employeeToDelete.isPresent()) {
             allEmployees.remove(employeeToDelete.get());
             return 1;

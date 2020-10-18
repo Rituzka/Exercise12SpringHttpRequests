@@ -1,6 +1,7 @@
 package com.itAcademy.springrequests.controller;
 
 import com.itAcademy.springrequests.dto.Employee;
+import com.itAcademy.springrequests.repository.EmployeeRepository;
 import com.itAcademy.springrequests.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -13,11 +14,13 @@ import java.util.Optional;
 public class EmployeeController {
 
     private final EmployeeService service;
-    
+
+
     @Autowired
     public EmployeeController(EmployeeService service){
         this.service = service;
     }
+
 
     //get all the employees in a list
    @GetMapping
@@ -34,7 +37,7 @@ public class EmployeeController {
    //Create a new Employee in the list (REVISAR)
    @PostMapping("/new")
     public void addEmployee( @NonNull @RequestBody Employee employee){
-        service.createEmployee(employee);
+        service.addEmployee(employee);
    }
 
    //Update one employee with id

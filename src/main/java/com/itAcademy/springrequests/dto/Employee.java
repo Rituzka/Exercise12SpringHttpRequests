@@ -1,35 +1,27 @@
 package com.itAcademy.springrequests.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
-
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "employees")
 public class Employee {
 
-    enum Role {
+    public enum Role {
         Director, Manager, Supervisor, Coordinator, Staff
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final long id;
-    @NotNull
-    private final String name;
-    @NotNull
-    private final String surname;
-    @NotNull
-    private final Role role;
-    @NotNull
+    private long id;
+    private String name;
+    private String surname;
+    private Role role;
     private double salary;
 
    //Constructor
     public Employee(
-            @JsonProperty("id") long id,
+            @JsonProperty("id") Long id,
             @JsonProperty("name") String name,
             @JsonProperty("surname") String surname,
             @JsonProperty("role")Role role
@@ -39,7 +31,7 @@ public class Employee {
         this.name = name;
         this.surname = surname;
         this.role = role;
-        this.salary = getSalary(role);
+        this.salary = calculateSalary(role);
     }
 
     //Getters & setters
@@ -59,7 +51,27 @@ public class Employee {
         return role;
     }
 
-    public double getSalary(Role role) {
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public double calculateSalary(Role role) {
 
         switch(role){
             case Director: salary = 350000;break;

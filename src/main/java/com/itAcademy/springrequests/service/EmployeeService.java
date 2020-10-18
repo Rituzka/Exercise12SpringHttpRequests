@@ -14,32 +14,32 @@ public class EmployeeService implements IService {
     private final IRepository repository;
 
     @Autowired
-    public EmployeeService(@Qualifier("firstRepository") IRepository repository) {
+    public EmployeeService (@Qualifier("DummyRepository") IRepository repository) {
         this.repository = repository;
     }
 
    //get all employees from repository
     @Override
     public List<Employee> getAllEmployees() {
-        return repository.getEmployees();
+        return repository.selectAllEmployees();
     }
 
     //get one Employee by id
     @Override
     public Optional <Employee> getEmployee(long id) {
-        return repository.getEmployeeById(id);
+        return repository.selectEmployeeById(id);
     }
 
     // Create new Employee
     @Override
-    public void createEmployee(Employee employee) {
-        repository.insertEmployee(employee);
+    public void addEmployee(Employee employee) {
+        repository.insertNewEmployee(employee);
     }
 
     //update data from one employee
     @Override
     public void updateEmployee(long id, Employee employee) {
-        repository.updateDataEmployee(id, employee);
+        repository.updateEmployeeById(id, employee);
     }
 
     //delete one employee from repository

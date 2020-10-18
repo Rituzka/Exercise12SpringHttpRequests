@@ -9,16 +9,16 @@ import java.util.Optional;
 public interface IRepository {
 
     //GET all Employees
-    List<Employee> getEmployees();
+    List<Employee> selectAllEmployees();
 
     //GET one Employee
-    Optional <Employee> getEmployeeById(long id);
+    Optional <Employee> selectEmployeeById(long id);
 
     //POST insert a new Employee
-    int insertEmployee(Employee employee);
+    int insertNewEmployee(Employee employee);
 
     //UPDATE data from an specific Employee
-    int updateDataEmployee(long id, Employee employee);
+    int updateEmployeeById(long id, Employee employee);
 
     //DELETE an specific Employee
     int deleteEmployeeById(long id);

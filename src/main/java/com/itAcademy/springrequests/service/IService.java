@@ -15,7 +15,7 @@ public interface IService {
   Optional<Employee> getEmployee(long id);
 
   //insert new Employee
-  void createEmployee(Employee employee);
+  void addEmployee(Employee employee);
 
   //update data from an Employee
   void updateEmployee(long id, Employee employee);
