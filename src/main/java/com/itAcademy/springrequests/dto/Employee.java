@@ -16,6 +16,7 @@ public class Employee {
     private long id;
     private String name;
     private String surname;
+    @Enumerated(EnumType.STRING)
     private Role role;
     private double salary;
 
@@ -31,7 +32,7 @@ public class Employee {
         this.name = name;
         this.surname = surname;
         this.role = role;
-        this.salary = calculateSalary(role);
+        this.salary = roleSalary(role);
     }
 
     //empty constructor
@@ -74,15 +75,18 @@ public class Employee {
         this.role = role;
     }
 
-    public double calculateSalary(Role role) {
+    public void setSalary(Double salary) {
+        this.salary = roleSalary(role);
+    }
 
+    //salary according to role
+    public double roleSalary(Role role) {
         switch(role){
             case Director: salary = 350000;break;
             case Manager: salary = 210000;break;
             case Supervisor: salary = 100000; break;
             case Coordinator: salary = 70000;break;
             case Staff: salary = 30000;break;
-            default: salary = 0;
         }
         return salary;
     }

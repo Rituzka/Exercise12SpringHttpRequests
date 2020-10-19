@@ -48,6 +48,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             employeeToUpdate.setName(employee.getName());
             employeeToUpdate.setSurname(employee.getSurname());
             employeeToUpdate.setRole(employee.getRole());
+            employeeToUpdate.setSalary(employeeToUpdate.getSalary());
 
         } else {
             throw new ResourceNotFoundException("employee not found with id: "+ employee.getId());
