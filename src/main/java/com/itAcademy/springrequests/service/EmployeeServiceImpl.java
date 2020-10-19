@@ -6,21 +6,16 @@ import com.itAcademy.springrequests.repository.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @Transactional
-public class EmployeeEmployeeServiceImpl implements IEmployeeService {
+public class EmployeeServiceImpl implements IEmployeeService {
 
-    private final IEmployeeRepository repository;
-
-    //constructor
     @Autowired
-    public EmployeeEmployeeServiceImpl(IEmployeeRepository repository) {
-        this.repository = repository;
-    }
+    IEmployeeRepository repository;
+
 
     @Override
     public List<Employee> getAllEmployees() {
@@ -53,6 +48,7 @@ public class EmployeeEmployeeServiceImpl implements IEmployeeService {
             employeeToUpdate.setName(employee.getName());
             employeeToUpdate.setSurname(employee.getSurname());
             employeeToUpdate.setRole(employee.getRole());
+
         } else {
             throw new ResourceNotFoundException("employee not found with id: "+ employee.getId());
         }
@@ -69,4 +65,5 @@ public class EmployeeEmployeeServiceImpl implements IEmployeeService {
             throw new ResourceNotFoundException("employee not found with id: "+ id);
 
     }
+
 }

@@ -1,6 +1,6 @@
 package com.itAcademy.springrequests.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,10 +21,10 @@ public class Employee {
 
    //Constructor
     public Employee(
-            @JsonProperty("id") Long id,
-            @JsonProperty("name") String name,
-            @JsonProperty("surname") String surname,
-            @JsonProperty("role")Role role
+            Long id,
+            String name,
+            String surname,
+            Role role
 
     ) {
         this.id = id;
@@ -33,6 +33,9 @@ public class Employee {
         this.role = role;
         this.salary = calculateSalary(role);
     }
+
+    //empty constructor
+    public Employee() {}
 
     //Getters & setters
     public long getId() {
@@ -55,6 +58,10 @@ public class Employee {
         return salary;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -65,10 +72,6 @@ public class Employee {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 
     public double calculateSalary(Role role) {
