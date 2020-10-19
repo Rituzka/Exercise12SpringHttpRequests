@@ -12,15 +12,15 @@ public interface IService {
   List<Employee> getAllEmployees();
 
   //get one employee with an id
-  Optional<Employee> getEmployee(long id);
+  Employee getEmployeeById(long id);
 
   //insert new Employee
-  void addEmployee(Employee employee);
+  Employee addEmployee(Employee employee);
 
   //update data from an Employee
-  void updateEmployee(long id, Employee employee);
+   Employee updateEmployee(long id, Employee employee);
 
   //delete an Employee from list
-  void deleteEmployee(long id);
+   void deleteEmployee(long id);
 
 }
