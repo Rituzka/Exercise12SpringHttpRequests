@@ -56,7 +56,7 @@ public class Employee {
     }
 
     public double getSalary() {
-        return salary;
+        return roleSalary(role);
     }
 
     public void setId(Long id) {
